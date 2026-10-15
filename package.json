@@ -1,0 +1,11 @@
+{
+  "name": "calculadora-basica",
+  "version": "1.0.0",
+  "description": "Calculadora web digital - NSI Software House",
+  "scripts": {
+    "test": "jest"
+  },
+  "devDependencies": {
+    "jest": "^29.7.0"
+  }
+}
