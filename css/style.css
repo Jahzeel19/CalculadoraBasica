@@ -1,0 +1,116 @@
+/* FRONT: diseño de la calculadora y de las ventanas
+   Paleta NSI: azul #114471, azul claro #2E8BC0, fondo #EAF1F8, texto #0F2236
+   Fuente: Calibri. Pantalla 28 pt, botones 20 pt, texto normal 16 pt */
+
+:root {
+  --azul: #114471;
+  --azul-claro: #2E8BC0;
+  --fondo: #EAF1F8;
+  --texto: #0F2236;
+  --rojo: #B03A2E;
+}
+
+* { box-sizing: border-box; }
+[hidden] { display: none !important; }
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--fondo);
+  font-family: Calibri, Carlito, Arial, sans-serif;
+  font-size: 16px;
+  color: var(--texto);
+}
+
+.calculadora {
+  width: 360px;
+  background: #fff;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 8px 24px rgba(17, 68, 113, 0.25);
+}
+
+.encabezado {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 16px;
+  background: var(--azul);
+  color: #fff;
+}
+.marca { font-weight: 700; font-size: 22px; letter-spacing: 1px; }
+.titulo { flex: 1; font-size: 16px; }
+.btn-ayuda {
+  width: 30px; height: 30px;
+  border: 2px solid #fff; border-radius: 50%;
+  background: transparent; color: #fff;
+  font-size: 16px; font-weight: 700; cursor: pointer;
+}
+.btn-ayuda:hover { background: var(--azul-claro); }
+
+.visor { padding: 16px 20px 8px; text-align: right; background: var(--fondo); }
+.expresion { min-height: 22px; font-size: 16px; color: #5B6B7A; }
+.pantalla {
+  font-size: 37px; /* 28 pt */
+  font-weight: 700;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.teclas {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+  padding: 16px;
+}
+.tecla {
+  height: 56px;
+  border: none; border-radius: 10px;
+  background: var(--fondo);
+  color: var(--texto);
+  font-family: inherit;
+  font-size: 27px; /* 20 pt */
+  cursor: pointer;
+  transition: transform 0.05s, background 0.15s;
+}
+.tecla:hover { background: #D5E4F1; }
+.tecla:active { transform: scale(0.96); }
+.tecla.operador { background: var(--azul-claro); color: #fff; }
+.tecla.operador:hover { background: #2479a8; }
+.tecla.accion { background: #CFE0EE; color: var(--azul); font-weight: 700; }
+.tecla.igual { background: var(--azul); color: #fff; grid-row: span 2; height: auto; }
+.tecla.igual:hover { background: #0d3556; }
+.tecla.cero { grid-column: span 2; }
+
+/* Ventanas emergentes */
+.modal {
+  position: fixed; inset: 0;
+  display: flex; align-items: center; justify-content: center;
+  background: rgba(15, 34, 54, 0.55);
+}
+.ventana {
+  width: 340px;
+  background: #fff;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+}
+.barra { padding: 10px 16px; background: var(--azul); color: #fff; font-weight: 700; font-size: 18px; }
+.barra.error { background: var(--rojo); }
+.cuerpo { margin: 0; padding: 20px 16px; font-size: 16px; }
+.atajos { list-style: none; display: grid; gap: 8px; }
+kbd {
+  display: inline-block; min-width: 76px; margin-right: 8px; padding: 2px 8px;
+  border: 1px solid #9AA8B5; border-radius: 6px; background: var(--fondo);
+  font-family: Consolas, monospace; font-size: 14px; text-align: center;
+}
+.pie { padding: 0 16px 16px; text-align: right; }
+.btn-modal {
+  padding: 8px 20px; border: none; border-radius: 8px;
+  background: var(--azul); color: #fff;
+  font-family: inherit; font-size: 16px; cursor: pointer;
+}
+.btn-modal:hover { background: #0d3556; }
